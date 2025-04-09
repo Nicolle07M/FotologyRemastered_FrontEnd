@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import DocumentTypeService from '../services/DocumentTypeService'
 import RolesService from '../services/RolesService'
+import PeopleService from '../services/PeopleService'
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -41,15 +42,17 @@ const Register = () => {
       try {
         const response = await RolesService.getAll()
         if (Array.isArray(response)) {
-          setRole(response)
+          const filteredRoles = response.filter((r) => r.id === 2 || r.id === 3)
+          setRole(filteredRoles)
         }
       } catch (error) {
         console.error("Error al obtener los roles:", error)
       }
     }
-
+  
     fetchRoles()
   }, [])
+  
 
 
   const handleChange = (e) => {

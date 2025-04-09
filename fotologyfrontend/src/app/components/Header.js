@@ -7,7 +7,7 @@ const Header = () => {
       <h2 className={styles.logo}>Mi Empresa</h2>
       <nav className={styles.nav}>
         <Link href="/" className={styles.link}>Inicio</Link>
-        <Link href="/login" className={styles.link}>Iniciar sesion</Link>
+        <Link href="/Login" className={styles.link}>Iniciar sesion</Link>
         <Link href="/Register" className={styles.link}>Registrarse</Link>
       </nav>
     </header>
