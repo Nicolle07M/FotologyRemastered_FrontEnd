@@ -49,11 +49,9 @@ const Register = () => {
         console.error("Error al obtener los roles:", error)
       }
     }
-  
+
     fetchRoles()
   }, [])
-  
-
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -74,117 +72,125 @@ const Register = () => {
 
       <Header />
 
-      <main className="min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gray-800">
-        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-gray-700 rounded-lg shadow-md my-10">
-          <h1 className="text-3xl text-blue-600 text-center mb-6 dark:text-gray-100">Registro de Usuario</h1>
-
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="nombre"
-              placeholder="Nombre"
-              value={formData.nombre}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
+      <main className="min-h-screen flex items-center justify-center bg-[#FDFDFD]">
+        <div className="flex w-full max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden">
+          {/* Imagen al lado izquierdo */}
+          <div className="w-1/2 hidden md:block">
+            <img
+              src="/paisaje1.jpg" // Asegúrate de que la imagen esté en public/images/
+              alt="Registro"
+              className="object-cover w-[350px] h-full"
             />
+          </div>
 
-            <input
-              type="text"
-              name="apellido"
-              placeholder="Apellido"
-              value={formData.apellido}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+          {/* Formulario al lado derecho */}
+          <div className="w-full md:w-1/2 p-8">
+            <h1 className="text-3xl text-[#BB7B4D] text-center mb-8 font-semibold">
+              Registro de Usuario
+            </h1>
 
-            <input
-              type="tel"
-              name="telefono"
-              placeholder="Número de Teléfono"
-              value={formData.telefono}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C] "
+                required
+              />
+              <input
+                type="text"
+                name="apellido"
+                placeholder="Apellido"
+                value={formData.apellido}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C]"
+                required
+              />
+              <input
+                type="tel"
+                name="telefono"
+                placeholder="Número de Teléfono"
+                value={formData.telefono}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C]"
+                required
+              />
+              <input
+                type="date"
+                name="fechaNacimiento"
+                value={formData.fechaNacimiento}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] text-[#1D432C]"
+                required
+              />
+              <input
+                type="email"
+                name="correo"
+                placeholder="Correo Electrónico"
+                value={formData.correo}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C]"
+                required
+              />
+              <select
+                name="tipoDocumento"
+                value={formData.tipoDocumento}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] text-[#1D432C] "
+                required
+              >
+                <option value="">Selecciona tipo de documento</option>
+                {documentTypes.map((doc, index) => (
+                  <option key={index} value={doc.name}>
+                    {doc.name}
+                  </option>
+                ))}
+              </select>
+              <input
+                type="text"
+                name="numeroDocumento"
+                placeholder="Número de Documento"
+                value={formData.numeroDocumento}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C]"
+                required
+              />
+              <input
+                type="text"
+                name="direccion"
+                placeholder="Dirección"
+                value={formData.direccion}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] placeholder-[#8a8b8a] text-[#1D432C]"
+                required
+              />
+              <select
+                name="rol"
+                value={formData.rol}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#9AAF86] text-[#1D432C]"
+                required
+              >
+                <option value="">Selecciona el rol</option>
+                {role.map((doc, index) => (
+                  <option key={index} value={doc.name}>
+                    {doc.name}
+                  </option>
+                ))}
+              </select>
 
-            <input
-              type="date"
-              name="fechaNacimiento"
-              value={formData.fechaNacimiento}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <input
-              type="email"
-              name="correo"
-              placeholder="Correo Electrónico"
-              value={formData.correo}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <select
-              name="tipoDocumento"
-              value={formData.documentTypes}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="">Selecciona tipo de documento</option>
-              {documentTypes.map((doc, index) => (
-                <option key={index} value={doc.name}>
-                  {doc.name}
-                </option>
-              ))}
-            </select>
-
-            <input
-              type="text"
-              name="numeroDocumento"
-              placeholder="Número de Documento"
-              value={formData.numeroDocumento}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <input
-              type="text"
-              name="direccion"
-              placeholder="Dirección"
-              value={formData.direccion}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <select
-              name="rol"
-              value={formData.rol}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            >
-              <option value="">Selecciona el rol</option>
-              {role.map((doc, index) => (
-                <option key={index} value={doc.name}>
-                  {doc.name}
-                </option>
-              ))}
-            </select>
-
-            <button
-              type="submit"
-              className="w-full p-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              Registrarse
-            </button>
-          </form>
+              <div className="md:col-span-2">
+                <button
+                  type="submit"
+                  className="w-full p-3 bg-[#BB7B4D] text-white font-semibold rounded-lg hover:bg-[#a9653d] focus:outline-none focus:ring-2 focus:ring-[#BB7B4D]"
+                >
+                  Registrarse
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </main>
 

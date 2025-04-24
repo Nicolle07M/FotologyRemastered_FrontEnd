@@ -27,6 +27,7 @@
   display: flex;
   gap: 1rem;
   align-items: center;
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* Animación */
 }
 
 .navOpen {
