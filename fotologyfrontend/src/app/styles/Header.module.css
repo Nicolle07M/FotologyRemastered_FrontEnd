@@ -1,30 +1,50 @@
 .header {
-    background-color: #0070f3;
-    color: white;
+    background-color: #ffffff;
+    color: #1D432C;
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 3px solid #eaeaea;;
   }
   
   .logo {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2.0rem;
+    font-family: 'Times New Roman', Times, serif;
   }
   
   .nav {
     display: flex;
     gap: 1rem;
+    align-items: center;
   }
   
   .link {
-    color: white;
+    color: #1D432C;
     text-decoration: none;
     font-weight: 500;
     transition: text-decoration 0.2s ease;
+    font-family: Arial, "sans-serif";
   }
   
   .link:hover {
-    text-decoration: underline;
+    text-decoration: none;
+  }
+
+  .loginButton {
+    background-color: #1D432C; /* Cambia el color según tu preferencia */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px; /* Hace que el contenedor sea ovalado */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .loginButton:hover {
+    background-color: #9AAF86; /* Color al pasar el cursor */
+    text-decoration: none;
   }
   
