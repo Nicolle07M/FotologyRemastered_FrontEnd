@@ -1,50 +1,84 @@
 .header {
-    background-color: #ffffff;
-    color: #1D432C;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 3px solid #eaeaea;;
-  }
-  
-  .logo {
-    margin: 0;
-    font-size: 2.0rem;
-    font-family: 'Times New Roman', Times, serif;
-  }
-  
-  .nav {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .link {
-    color: #1D432C;
-    text-decoration: none;
-    font-weight: 500;
-    transition: text-decoration 0.2s ease;
-    font-family: Arial, "sans-serif";
-  }
-  
-  .link:hover {
-    text-decoration: none;
+  background-color: #FDFDFD;
+  color: #1D432C;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-shadow: #9AAF86 0px 2px 4px;
+}
+
+.logo {
+  margin: 0;
+  font-size: 2.0rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.navOpen {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  border-top: 1px solid #eaeaea;
+  padding: 1rem 0;
+}
+
+.link {
+  color: #1D432C;
+  text-decoration: none;
+  font-weight: 500;
+  transition: text-decoration 0.2s ease;
+  font-family: Arial, "sans-serif";
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.loginButton {
+  background-color: #1D432C;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.loginButton:hover {
+  background-color: #9AAF86;
+}
+
+/* Media queries para pantallas pequeñas */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
   }
 
-  .loginButton {
-    background-color: #1D432C; /* Cambia el color según tu preferencia */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 15px; /* Hace que el contenedor sea ovalado */
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+  .nav {
+    display: none;
   }
-  
-  .loginButton:hover {
-    background-color: #9AAF86; /* Color al pasar el cursor */
-    text-decoration: none;
+
+  .navOpen {
+    display: flex;
   }
-  
+}
