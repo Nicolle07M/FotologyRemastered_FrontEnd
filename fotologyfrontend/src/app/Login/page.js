@@ -18,7 +18,6 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Credenciales:', credentials)
-    // Aquí puedes hacer la llamada al backend para autenticar
   }
 
   return (
@@ -27,44 +26,50 @@ const Login = () => {
         <title>Iniciar Sesión</title>
       </Head>
 
-      <Header />
+      <div className="min-h-screen flex flex-col bg-[#FDFDFD]">
+        <Header />
 
-      <main className="min-h-screen flex flex-col justify-between bg-gray-100 dark:bg-gray-800">
-        <div className="max-w-lg mx-auto p-8 bg-white dark:bg-gray-700 rounded-lg shadow-md my-10">
-          <h1 className="text-3xl text-blue-600 text-center mb-6 dark:text-gray-100">Iniciar Sesión</h1>
-
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <input
-              type="email"
-              name="correo"
-              placeholder="Correo Electrónico"
-              value={credentials.correo}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <input
-              type="password"
-              name="contraseña"
-              placeholder="Contraseña"
-              value={credentials.contraseña}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-
-            <button
-              type="submit"
-              className="w-full p-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
+        {/* Contenedor principal */}
+        <main className="flex-grow flex items-center justify-center px-4">
+          {/* Recuadro */}
+          <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+            <h1 className="text-4xl text-[#1D432C] mb-6 font-[Times_New_Roman] text-center">
               Iniciar Sesión
-            </button>
-          </form>
-        </div>
-      </main>
+            </h1>
 
-      <Footer />
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="email"
+                name="correo"
+                placeholder="Correo Electrónico"
+                value={credentials.correo}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#BB7B4D] text-gray-700"
+                required
+              />
+
+              <input
+                type="password"
+                name="contraseña"
+                placeholder="Contraseña"
+                value={credentials.contraseña}
+                onChange={handleChange}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#BB7B4D] text-gray-700"
+                required
+              />
+
+              <button
+                type="submit"
+                className="mt-4 w-full py-3 px-6 bg-[#BB7B4D] text-white font-bold rounded-lg transition-colors duration-300 hover:bg-[#b78a6a] focus:outline-none"
+              >
+                Iniciar Sesión
+              </button>
+            </form>
+          </div>
+        </main>
+
+        <Footer />
+      </div>
     </>
   )
 }
