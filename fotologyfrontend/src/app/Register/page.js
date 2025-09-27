@@ -5,6 +5,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import DocumentTypeService from "../services/DocumentTypeService"
 import RolesService from "../services/RolesService"
+import PeopleService from "../services/PeopleService"
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,7 @@ const Register = () => {
   const [documentTypes, setDocumentTypes] = useState([])
   const [roles, setRoles] = useState([])
 
+  // Cargar tipos de documento
   useEffect(() => {
     const fetchDocumentTypes = async () => {
       try {
@@ -32,10 +34,10 @@ const Register = () => {
         console.error("Error al obtener los tipos de documento:", error)
       }
     }
-
     fetchDocumentTypes()
   }, [])
 
+  // Cargar roles (filtrando 2 y 3)
   useEffect(() => {
     const fetchRoles = async () => {
       try {
@@ -48,15 +50,16 @@ const Register = () => {
         console.error("Error al obtener los roles:", error)
       }
     }
-
     fetchRoles()
   }, [])
 
+  // Manejar cambios en inputs
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
+  // Enviar formulario usando PeopleService
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -66,36 +69,32 @@ const Register = () => {
       phone: formData.telefono,
       birth_date: formData.fechaNacimiento,
       email: formData.correo,
-      document_type_id: formData.tipoDocumento, // ahora enviamos el ID
+      document_type_id: formData.tipoDocumento,
       document_number: formData.numeroDocumento,
       address: formData.direccion,
       photo: null, // opcional
-      rol: formData.rol, // si quieres enviarlo al backend
+      rol: formData.rol,
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/people", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+      const response = await PeopleService.create(payload)
+      console.log("✅ Usuario creado:", response)
+      alert("Usuario registrado correctamente, tu contraseña es la primera letra de tu nombre en mayúscula + tu número de documento.")
+      // opcional: resetear formulario
+      setFormData({
+        nombre: "",
+        apellido: "",
+        telefono: "",
+        fechaNacimiento: "",
+        correo: "",
+        tipoDocumento: "",
+        numeroDocumento: "",
+        direccion: "",
+        rol: "",
       })
-
-      if (!response.ok) {
-        const errorData = await response.json()
-        console.error("Error en el registro:", errorData)
-        alert("❌ Error al registrar el usuario")
-        return
-      }
-
-      const data = await response.json()
-      console.log("✅ Usuario creado:", data)
-      alert("Usuario registrado correctamente")
     } catch (error) {
-      console.error("Error en la solicitud:", error)
-      alert("⚠️ Hubo un problema con la conexión al servidor")
+      console.error("❌ Error al registrar:", error)
+      alert("Error al registrar el usuario")
     }
   }
 

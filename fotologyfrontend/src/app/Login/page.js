@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react'
+import { useRouter } from "next/navigation"
 import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -10,6 +11,8 @@ const Login = () => {
     contraseña: '',
   })
 
+  const router = useRouter()
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setCredentials((prev) => ({ ...prev, [name]: value }))
@@ -18,6 +21,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Credenciales:', credentials)
+
+    // Aquí podrías validar las credenciales con tu API antes de redirigir
+    router.push("/Phothographer/Landing")
   }
 
   return (
